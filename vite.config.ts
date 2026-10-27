@@ -8,6 +8,10 @@ export default defineConfig(({ mode }) => {
       server: {
         port: 3000,
         host: '0.0.0.0',
+        // Jev AI calls go through our own server (npm run server), which holds JEV_AI_API_KEY.
+        proxy: {
+          '/api': 'http://localhost:3001',
+        },
       },
       plugins: [react()],
       define: {
